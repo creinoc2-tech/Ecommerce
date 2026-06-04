@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+body{
+    background-color: #0f0f10;
+}
+
+ @keyframes marquee {
+  0% {
+    transform: translateX(0);
+  } 
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  animation-name: marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
