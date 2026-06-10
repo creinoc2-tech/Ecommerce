@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type FC } from "react";
+import { useEffect, useState, type FC } from "react";
 import { useAuthStore } from "../../store/auth.store";
 import { useNavigate } from "react-router";
 
@@ -64,13 +64,13 @@ export const UserMenu: FC<props> = ({ user }) => {
           <div className="py-1">
             <button
               className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-800 transition-colors"
-              onClick={() => navigate("/account/profile")}
+              onClick={() => navigate("/cuenta/perfil")}
             >
               Profile
             </button>
             <button
               className="block w-full text-left px-4 py-2 text-sm text-white hover:bg-neutral-800 transition-colors"
-              onClick={() => navigate("/account/orders")}
+              onClick={() => navigate("/cuenta/ordenes")}
             >
               My Orders
             </button>

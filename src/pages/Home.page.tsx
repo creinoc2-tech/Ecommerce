@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { Hero } from '../components/home/heor'
 import { FeatureGrid } from '../components/Feature/feature-grid'
 import { Collections } from '../components/home/collection-container'

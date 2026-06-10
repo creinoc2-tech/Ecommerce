@@ -1,5 +1,5 @@
-import React from "react";
-import { useCartStore } from "../../store/cart-store";
+
+import { useCartStore } from "../../store/carrito.store";
 import { Link } from "react-router";
 
 export const CartSummary = ({ cartItems }: { cartItems: any[] }) => {
@@ -56,7 +56,7 @@ export const CartSummary = ({ cartItems }: { cartItems: any[] }) => {
           </button>
         </div>
         <Link
-          to="/checkout"
+          to="/pago"
           className="w-full rounded-full bg-[#b6a789] text-[#23211c] font-semibold py-3 text-base flex items-center justify-center gap-2 transition-colors hover:bg-[#c8b99a] shadow-sm text-[17px]"
         >
           Go to Checkout

@@ -1,4 +1,4 @@
-import React from "react";
+
 import { formatPrice } from "../../utils/productos";
 
 export const OrdersDetails = ({ order }: { order: any }) => {
@@ -11,7 +11,7 @@ export const OrdersDetails = ({ order }: { order: any }) => {
       <h3 className="font-medium">Detalles del pedido</h3>
       <div className="flex flex-col gap-5">
         <ul className="space-y-3">
-          {order?.orderItems.map((item, index: number) => (
+          {order?.orderItems.map((item: any, index: number) => (
             <li key={index} className="flex justify-between items-center gap-3">
               <div className="flex">
                 <img

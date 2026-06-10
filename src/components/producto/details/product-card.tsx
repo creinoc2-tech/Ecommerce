@@ -1,8 +1,8 @@
 import React, { useState, type FC } from "react";
 import { Eye, ShoppingCart, Store } from "lucide-react";
 import { Link } from "react-router";
-import type { PreparedProducts } from "../../../interfaces/product.interface";
-import { useCartStore } from "../../../store/cart-store";
+import type { PreparedProducts } from "../../../interfaces/producto.interface";
+import { useCartStore } from "../../../store/carrito.store";
 
 interface ProductCardProps {
   product: PreparedProducts;
@@ -36,12 +36,10 @@ export const ProductCard: FC<ProductCardProps> = ({
           price: selectedVariant.price,
           quantity: 1,
         });
-        console.log("Producto añadido al carrito");
       } else {
-        console.log("Producto agotado");
       }
     } catch (error) {
-      console.error("Error al añadir el producto al carrito:", error);
+      if (import.meta.env.DEV) console.error("Error al añadir el producto al carrito:", error);
     }
   };
 
@@ -127,7 +125,7 @@ export const ProductCard: FC<ProductCardProps> = ({
         </div>
 
         {/* Nombre y slug */}
-        <Link to={`/product/${product.slug}`}>
+        <Link to={`/productos/${product.slug}`}>
           <h3
             className="text-lg font-semibold  text-gray-200
           hover:text-[#bca789] transition line-clamp-1"

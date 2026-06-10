@@ -8,7 +8,6 @@ interface Props {
 }
 
 export const ProductDescription = ({ content }: Props) => {
-    console.log("Contenido de la descripción:", content);
 
     const editor = useEditor({
 		extensions: [StarterKit],

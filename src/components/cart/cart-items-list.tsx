@@ -1,5 +1,5 @@
 import { LuMinus, LuPlus } from "react-icons/lu";
-import { useCartStore } from "../../store/cart-store";
+import { useCartStore } from "../../store/carrito.store";
 import { formatPrice } from "../../utils/productos";
 
 export const CartItemsList = ({ cartItems }: { cartItems: any[] }) => {

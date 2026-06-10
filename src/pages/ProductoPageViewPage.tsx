@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useMostrarProductoSeleccionadoStack } from "../stack/producto/productos-seleccionado-Stack";
+import { useMostrarProductoSeleccionadoStack } from "../stack/producto/producto-seleccionado.stack";
 import { ProductMainSection } from "../components/producto/product-details/main-section";
  
 export const ProductoPageViewPage = () => {

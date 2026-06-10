@@ -1,41 +1,35 @@
-import React, { type FC } from "react";
-import type { OrderItemSingle } from "../../interfaces/order.interface";
+import { type FC } from "react";
 import { formatPrice } from "../../utils/productos";
 import { useNavigate } from "react-router";
 import { formatDateLong, getStatus } from "../../utils/helpers";
 interface Props {
   orders: any[];
- }
+}
 const tableHeaders = ["Order ID", "Date", "Status", "Total" , "Actions"];
-export const OrderTable: FC<Props> = ({ orders, count }: Props) => {
+export const OrderTable: FC<Props> = ({ orders }: Props) => {
   const navigate = useNavigate();
 
   // Badge de estado
   const statusBadge = (status: string) => {
-    let color = "";
     let bg = "";
     let text = "";
     switch (status) {
       case "delivered":
       case "Delivered":
-        color = "#1a1a1a";
         bg = "bg-[#d1fae5]";
         text = "text-[#065f46]";
         break;
       case "processing":
       case "Processing":
-        color = "#1a1a1a";
         bg = "bg-[#fef3c7]";
         text = "text-[#92400e]";
         break;
       case "cancelled":
       case "Cancelled":
-        color = "#fff1f2";
         bg = "bg-[#fca5a5]";
         text = "text-[#991b1b]";
         break;
       default:
-        color = "#e4e4e7";
         bg = "bg-[#23232a]";
         text = "text-[#e4e4e7]";
     }
@@ -65,7 +59,7 @@ export const OrderTable: FC<Props> = ({ orders, count }: Props) => {
             <tr
               key={order.id}
               className="hover:bg-[#23232a] transition-colors duration-150 bg-[#1a1a1a] border border-[#262626] group"
-              onClick={() => navigate(`/account/pedidos/${order.id}`)}
+              onClick={() => navigate(`/cuenta/ordenes/pedido/${order.id}`)}
               style={{ cursor: "pointer" }}
             >
               <td className="p-4 font-semibold text-[#ffe082]">

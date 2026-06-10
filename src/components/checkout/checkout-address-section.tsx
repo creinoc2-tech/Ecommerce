@@ -2,13 +2,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   addressSchema,
   type AddressFormValues,
-} from "../../schema/address.schema";
-import { useCartStore } from "../../store/cart-store";
+} from "../../schema/direccion.schema";
+import { useCartStore } from "../../store/carrito.store";
 import { ShippingMethodSelector } from "./shipping-method-selector";
-import { useCreateOrder } from "../../stack/orders/orders-create-Stack";
+import { useCreateOrder } from "../../stack/ordenes/crear-orden.stack";
 import { useForm } from "react-hook-form";
 import { ImSpinner2 } from "react-icons/im";
-import type { OrderInput } from "../../interfaces/order.interface";
+import type { OrderInput } from "../../interfaces/orden.interface";
 import type z from "zod";
 
 export const CheckoutAddressSection = () => {
@@ -16,7 +16,6 @@ export const CheckoutAddressSection = () => {
 
   const {
     register,
-    formState: { errors },
     handleSubmit,
   } = useForm<AddressFormValues>({
     resolver: zodResolver(addressSchema),
@@ -39,7 +38,7 @@ export const CheckoutAddressSection = () => {
 
       mutate(orderInput);
     } catch (error) {
-      console.error("Error al procesar el formulario:", error);
+      if (import.meta.env.DEV) console.error("Error al procesar el formulario:", error);
     }
   });
 

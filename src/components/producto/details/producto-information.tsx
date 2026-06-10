@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { BsChatLeftText } from "react-icons/bs";

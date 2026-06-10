@@ -1,23 +1,17 @@
 import { Filter, X } from "lucide-react";
-import React, { type FC } from "react";
-import type { FilterState } from "../../store/product-filters-store";
-import { FilterSidebar } from "./filter-sidebar";
+import { type FC, useState } from "react";
   
 
 interface MobileFilterDrawerProps {
-  filters: FilterState;
-  updateFilter: (key: keyof FilterState, value: any) => void;
   totalResults: number;
   className?: string;
 }
 
 export const MobileFilterDrawer:  FC<MobileFilterDrawerProps> = ({
-  filters,
-  updateFilter,
   totalResults,
   className = "",
 } ) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -59,12 +53,7 @@ export const MobileFilterDrawer:  FC<MobileFilterDrawerProps> = ({
         </div>
 
         {/* Contenido */}
-        <div className="p-4 overflow-y-auto h-[calc(100%-140px)]">
-           {/*<FilterSidebar
-            selectedBrands={filters.brands}
-            setSelectedBrands={(brands) => updateFilter("brands", brands)}
-          />*/}
-        </div>
+        <div className="p-4 overflow-y-auto h-[calc(100%-140px)]" />
 
         {/* Footer */}
         <div className="absolute bottom-0 left-0 w-full border-t border-[#2a2a2a] bg-[#0f0f10] p-4">

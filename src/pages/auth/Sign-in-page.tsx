@@ -1,7 +1,7 @@
-import React from "react";
+
 import { Link } from "react-router";
 import { AuthForm } from "../../components/container/auth/auth-form";
-
+ 
 export const SignInPage = () => {
     
   return (
@@ -16,10 +16,12 @@ export const SignInPage = () => {
          <AuthForm
           mode="sign-in"
          />
+
+         
       </div>
       <p className="mt-4 text-center text-muted-foreground text-sm text-neutral-400">
         Don't have an account?{" "}
-        <Link to="/auth/sign-up" className="underline">
+        <Link to="/auth/registrarse" className="underline">
           Sign up
         </Link>
       </p>

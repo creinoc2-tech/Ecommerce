@@ -1,8 +1,8 @@
 import { gridCellBorderClasses } from "../../utils/gridCellBorderClasses";
 import CollectionItem from "../common/collection-item";
 import { prepareProducts } from "../../utils/productos";
-import { useMostrarProductosStack } from "../../stack/producto/productos-Stack";
-import { useCartStore } from "../../store/cart-store";
+import { useMostrarProductosStack } from "../../stack/producto/mostrar-productos.stack";
+import { useCartStore } from "../../store/carrito.store";
 import { useCounterStore } from "../../store/counter.store";
 
 export const CollectionContainer = () => {

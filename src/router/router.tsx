@@ -1,83 +1,89 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { RutaProtegida } from "../hooks/ruta-protegida";
 import { Layout } from "../layout/Layout";
+import { AccountLayout } from "../layout/account/account-layout";
 import { Home } from "../pages/Home.page";
+import { CartPage } from "../pages/Cart/CartPage";
+import { CheckoutPage } from "../pages/Pago/CheckoutPage";
+import { ThankYouPage } from "../pages/Gracias/ThankYouPage";
 import { ProductoPage } from "../pages/Producto.Page";
 import { ProductoPageViewPage } from "../pages/ProductoPageViewPage";
-import { ProtectedRoute } from "../hooks/Protected.route";
 import SignUpPage from "../pages/auth/Sign-up-page";
 import { SignInPage } from "../pages/auth/Sign-in-page";
-import { AccountLayout } from "../layout/account/account-layout";
-import { ProfilePage } from "../pages/profile/profile.Page";
-import { OrdersPage } from "../pages/orders/Orders.Page";
-import { CartPage } from "../pages/Cart/CartPage";
-import { CheckoutPage } from "../pages/Checkou/CheckoutPage";
-import { ThankYouPage } from "../pages/ThankYou/ThankYouPage";
 import { OrderPage } from "../pages/orders/Order.Page";
+import { OrdersPage } from "../pages/orders/Orders.Page";
+import { ProfilePage } from "../pages/profile/profile.Page";
+import CategoryTemplate from "../layout/categories/categories-layout";
+import { CategoriaPage } from "../pages/categoria/Categoria.page";
 
-export const MyRoutes = () => {
+export const MisRutas = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/product" element={<ProductoPage />} />
-          <Route path="/product/:slug" element={<ProductoPageViewPage />} />
+          <Route path="/productos" element={<ProductoPage />} />
+          <Route path="/productos/:slug" element={<ProductoPageViewPage />} />
 
           <Route
-            path="/account/*"
+            path="/cuenta/*"
             element={
-              <ProtectedRoute authenticated={true}>
+              <RutaProtegida autenticado={true}>
                 <AccountLayout />
-              </ProtectedRoute>
+              </RutaProtegida>
             }
           >
-            <Route path="profile" element={<ProfilePage />} />
-            <Route path="orders" element={<OrdersPage />} />
-            <Route path="orders/pedido/:id" element={<OrderPage />} />
+            <Route path="perfil" element={<ProfilePage />} />
+            <Route path="ordenes" element={<OrdersPage />} />
+            <Route path="ordenes/pedido/:id" element={<OrderPage />} />
           </Route>
 
           <Route
-            path="/checkout"
+            path="/pago"
             element={
-              <ProtectedRoute authenticated={true}>
+              <RutaProtegida autenticado={true}>
                 <CheckoutPage />
-              </ProtectedRoute>
+              </RutaProtegida>
             }
           />
 
+          <Route path="/category" element={<CategoryTemplate />}>
+            <Route index element={<CategoriaPage />} />
+          </Route>
+
           <Route
-            path="/checkout/:id/thank-you"
+            path="/pago/:id/gracias"
             element={
-              <ProtectedRoute authenticated={true}>
+              <RutaProtegida autenticado={true}>
                 <ThankYouPage />
-              </ProtectedRoute>
+              </RutaProtegida>
             }
           />
 
           <Route
-            path="/cart"
+            path="/carrito"
             element={
-              <ProtectedRoute authenticated={true}>
+              <RutaProtegida autenticado={true}>
                 <CartPage />
-              </ProtectedRoute>
+              </RutaProtegida>
             }
           />
         </Route>
 
         <Route
-          path="/auth/sign-in"
+          path="/auth/iniciar-sesion"
           element={
-            <ProtectedRoute authenticated={false}>
+            <RutaProtegida autenticado={false}>
               <SignInPage />
-            </ProtectedRoute>
+            </RutaProtegida>
           }
         />
         <Route
-          path="/auth/sign-up"
+          path="/auth/registrarse"
           element={
-            <ProtectedRoute authenticated={false}>
+            <RutaProtegida autenticado={false}>
               <SignUpPage />
-            </ProtectedRoute>
+            </RutaProtegida>
           }
         />
       </Routes>

@@ -1,6 +1,6 @@
 import { LuMinus, LuPlus } from "react-icons/lu";
-import type { Props } from "../../interfaces/cart.interface";
-import { useCartStore } from "../../store/cart-store";
+import type { Props } from "../../interfaces/carrito.interface";
+import { useCartStore } from "../../store/carrito.store";
 import { formatPrice } from "../../utils/productos";
 
 export const CartItem = ({ item }: Props) => {

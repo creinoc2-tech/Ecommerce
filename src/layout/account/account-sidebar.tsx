@@ -5,12 +5,12 @@ import { useAuthStore } from "../../store/auth.store";
 const sidebarItems = [
   {
     title: "Profile",
-    href: "/account/profile",
+    href: "/cuenta/perfil",
     icon: User,
   },
   {
     title: "My Orders",
-    href: "/account/orders",
+    href: "/cuenta/ordenes",
     icon: Package,
   },
   {

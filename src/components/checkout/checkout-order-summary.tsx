@@ -1,5 +1,5 @@
-import React from "react";
-import { useCartStore } from "../../store/cart-store";
+
+import { useCartStore } from "../../store/carrito.store";
 import { formatPrice } from "../../utils/productos";
 
 export const CheckoutOrderSummary = () => {

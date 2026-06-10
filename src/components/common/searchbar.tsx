@@ -1,5 +1,5 @@
 import { Search, X } from "lucide-react";
-import React, { useEffect, useState, type FC } from "react";
+import { useEffect, useState, type FC } from "react";
 
 interface SearchBarProps {
   className?: string;

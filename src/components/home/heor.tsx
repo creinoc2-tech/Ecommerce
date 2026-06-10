@@ -34,7 +34,7 @@ export const Hero = () => {
     rounded-xl shadow p-3"
             >
               <Link
-                to="/product"
+                to="/productos"
                 className="flex items-center gap-2 
       text-base px-6 py-4 
       bg-[#1F1F1F] rounded-lg 

@@ -1,13 +1,13 @@
 import { useEffect, useRef } from "react";
 import { useGlobalStore } from "../../store/global.store";
-import {CartSheet} from "../cart/cart-sheet";
+import { CartSheet } from "../cart/cart-sheet";
 import { Search } from "../Search";
 
 
 
 export const Sheet = () => {
-	const sheetContent = useGlobalStore(state => state.sheetContent);
-	const closeSheet = useGlobalStore(state => state.closeSheet);
+	const sheetContent = useGlobalStore((state) => state.sheetContent);
+	const closeSheet = useGlobalStore((state) => state.closeSheet);
 
 	const sheetRef = useRef<HTMLDivElement | null>(null);
 

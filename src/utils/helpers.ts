@@ -1,4 +1,4 @@
-import type { Color, Product, VariantProduct } from "../interfaces/product.interface";
+import type { Color, Product, VariantProduct } from "../interfaces/producto.interface";
 
  
 
@@ -102,9 +102,9 @@ export const generateSlug = (name: string): string => {
 // Función para extraer el path relativo al bucket de una URL
 export const extractFilePath = (url: string) => {
 	const parts = url.split(
-		'/storage/v1/object/public/product-images/'
+		'/storage/v1/object/public/productos-images/'
 	);
-	// EJEMPLO PARTS: ['/storage/v1/ object/public/product-images/', '02930920302302030293023-iphone-12-pro-max.jpg']
+	// EJEMPLO PARTS: ['/storage/v1/ object/public/productos-images/', '02930920302302030293023-iphone-12-pro-max.jpg']
 
 	if (parts.length !== 2) {
 		throw new Error(`URL de imagen no válida: ${url}`);

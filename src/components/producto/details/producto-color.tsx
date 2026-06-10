@@ -2,7 +2,7 @@ import { useMemo, useState, type FC } from "react";
 import type {
   Product,
   VariantProduct,
-} from "../../../interfaces/product.interface";
+} from "../../../interfaces/producto.interface";
 import { ProductoAction } from "./producto-action";
 
 interface Acc {

@@ -1,5 +1,5 @@
-import React, { type FC } from "react";
-import type { Product } from "../../../interfaces/product.interface";
+import { type FC } from "react";
+import type { Product } from "../../../interfaces/producto.interface";
 import { ProductImageGallery } from "../details/product-image-gallery";
 import { ProductHeader } from "../details/product-header";
 import { ProductPrice } from "../details/product-price";
@@ -13,7 +13,6 @@ interface ProductMainSectionProps {
 export const ProductMainSection: FC<ProductMainSectionProps> = ({
   product,
 }) => {
-  console.log("Producto en MainSection:", product);
   return (
     <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 xl:gap-12">
       <div className="xl:col-span-7">

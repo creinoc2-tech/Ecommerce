@@ -1,7 +1,7 @@
-import React from "react";
-import { useCartStore } from "../../store/cart-store";
+
+import { useCartStore } from "../../store/carrito.store";
 import { Link } from "react-router";
- import { CartItemsList } from "../../components/cart/cart-items-list";
+import { CartItemsList } from "../../components/cart/cart-items-list";
 import { CartSummary } from "../../components/cart/cart-summary";
 
 export const CartPage = () => {
@@ -21,7 +21,7 @@ export const CartPage = () => {
               Su carro esta vacío
             </p>
             <Link
-              to="/product"
+              to="/productos"
               className="py-4 bg-black rounded-full text-white px-7 text-xs uppercase tracking-widest font-semibold"
             >
               Empezar a comprar

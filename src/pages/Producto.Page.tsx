@@ -4,7 +4,7 @@ import { ProductGrid } from "../components/producto/product-list/product-grid";
 import { prepareProducts } from "../utils/productos";
  import { useState } from "react";
 import { Pagination } from "../components/producto/Pagination";
-import { useMostrarProductoFiltradoStack } from "../stack/producto/productos-filter-Stack";
+import { useMostrarProductoFiltradoStack } from "../stack/producto/filtrar-productos.stack";
 
 export const ProductoPage = () => {
   const [page, setPage] = useState(1);

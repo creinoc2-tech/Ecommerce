@@ -1,6 +1,6 @@
-import React from "react";
+
 import { useGlobalStore } from "../../store/global.store";
-import { useCartStore } from "../../store/cart-store";
+import { useCartStore } from "../../store/carrito.store";
 import { Link } from "react-router";
 import { RiSecurePaymentLine } from 'react-icons/ri';
 import { CartItem } from "./cart-item";
@@ -40,7 +40,7 @@ export const CartSheet = () => {
             </div>
             <div className="text-xs text-zinc-500 mb-4">Shipping and taxes calculated at checkout.</div>
             <Link
-              to="/cart"
+              to="/carrito"
               onClick={closeSheet}
               className="w-full bg-[#0f0f10]
                text-white font-semibold py-2.5 rounded-md flex items-center justify-center
@@ -68,7 +68,7 @@ export const CartSheet = () => {
           </svg>
           <div className="mt-4 text-zinc-400 text-lg">Your cart is empty</div>
           <Link
-            to="/product"
+            to="/productos"
             onClick={closeSheet}
             className="mt-3 text-amber-200 font-mono text-base hover:underline"
           >

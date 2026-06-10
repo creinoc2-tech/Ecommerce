@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router";
 import { AuthForm } from "../../components/container/auth/auth-form";
 
@@ -14,7 +14,7 @@ const SignUpPage = () => {
       </div>
       <p className="mt-4 text-center text-muted-foreground text-sm text-white">
         Already have an account?{" "}
-        <Link to="/auth/sign-in" className="underline">
+        <Link to="/auth/iniciar-sesion" className="underline">
           Sign in
         </Link>
       </p>

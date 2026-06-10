@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Section } from "../common/section";
 import StarSolidIcon from "../ui/icons/star-solid";
 import { CollectionContainer } from "../cart/CollectionContainer";

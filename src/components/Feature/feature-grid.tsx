@@ -1,4 +1,3 @@
-import React from "react";
 import { Section } from "../common/section";
 import FeatureGridContainer from "./feature-grid-container";
 

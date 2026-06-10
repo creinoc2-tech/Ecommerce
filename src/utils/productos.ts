@@ -1,4 +1,4 @@
- import type { Color, Product, VariantProduct } from "../interfaces/product.interface";
+ import type { Color, Product, VariantProduct } from "../interfaces/producto.interface";
 
 export const prepareProducts = (products: Product[]) => {
 	return products.map(product => {

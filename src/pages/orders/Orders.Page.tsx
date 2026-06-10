@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import { useMostrarUsuarioAuthQuery } from "../../stack/user/user-get-Stack";
-import { useGetOrderUsuarios } from "../../stack/orders/orders-usuarioId-Stack";
+import { useState } from "react";
+import { useMostrarUsuarioAuthQuery } from "../../stack/usuario/obtener-usuario.stack";
 import { Link } from "react-router";
 import { OrderTable } from "../../components/order/order-table";
-import { useMostrarOrderFiltradoStack } from "../../stack/orders/orders.filter-Stack";
+import { useMostrarOrderFiltradoStack } from "../../stack/ordenes/filtrar-ordenes.stack";
 import { Pagination } from "../../components/producto/Pagination";
 
 export const OrdersPage = () => {
@@ -11,13 +10,12 @@ export const OrdersPage = () => {
   const customerId = usuario?.id;
 
   const [page, setPage] = useState(1);
-  const [status, setStatus] = useState<string[]>([]);
-  const { data: orders, isLoading } = useMostrarOrderFiltradoStack(
+  const [status] = useState<string[]>([]);
+  const { data: orders } = useMostrarOrderFiltradoStack(
     customerId,
     page,
     status,
   );
-  console.log("Orders data:", orders);
 
   return (
     <div className="py-10 px-2 flex flex-col items-center">
@@ -72,7 +70,7 @@ export const OrdersPage = () => {
                 Todavía no has hecho ningún pedido
               </p>
               <Link
-                to="/products"
+                to="/productos"
                 className="bg-[#ffe082] text-[#18181b] uppercase font-semibold tracking-widest text-xs py-4 rounded-full px-8 shadow hover:bg-[#ffe9b3] border border-[#ffe082]"
               >
                 Empezar a comprar

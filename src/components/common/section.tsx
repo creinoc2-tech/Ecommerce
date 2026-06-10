@@ -32,7 +32,7 @@ export const Section: FC<SectionProps> = ({
       <div
         className={`
           relative z-10 overflow-hidden rounded-2xl
-          border-2 border-dashed border-[#2A2A2A]
+          border-2 border-dashed border-zinc-800
           
           ${containerClassName}
         `}
@@ -67,7 +67,7 @@ export const Section: FC<SectionProps> = ({
             </h2>
 
             {description && (
-              <p className={`text-gray-400 ${descriptionClassName}`}>
+              <p className={`text-zinc-400 ${descriptionClassName}`}>
                 {description}
               </p>
             )}

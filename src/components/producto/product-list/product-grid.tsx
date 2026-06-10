@@ -2,7 +2,7 @@ import { Loader2 } from "lucide-react";
 import type { FC } from "react";
 import { ProductGridSkeleton } from "../details/product-grid-skeleton";
 import { ProductCard } from "../details/product-card";
-import type { PreparedProducts  } from "../../../interfaces/product.interface";
+import type { PreparedProducts  } from "../../../interfaces/producto.interface";
  
 interface ProductGridProps {
   products:  PreparedProducts[];
@@ -25,7 +25,6 @@ export const ProductGrid: FC<ProductGridProps> = ({
     return <ProductGridSkeleton />;
   }
 
-  console.log("Productos a mostrar:", products);
   return (
     <div className="space-y-8">
       {/* Grid / List */}

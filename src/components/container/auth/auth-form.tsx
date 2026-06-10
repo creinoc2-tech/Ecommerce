@@ -1,10 +1,10 @@
-import React, { type FC } from "react";
+import { type FC } from "react";
 import { LoginSchema, RegisterSchema } from "../../../schema/auth.schema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import type z from "zod";
-import { useLoginUsuarioYSesionMutate } from "../../../stack/auth/login-Stack";
-import { useCrearUsuarioYSesionMutate } from "../../../stack/auth/register-Stack";
+import { useLoginUsuarioYSesionMutate } from "../../../stack/auth/iniciar-sesion.stack";
+import { useCrearUsuarioYSesionMutate } from "../../../stack/auth/registrar.stack";
+import { useLoginGoogleMutate } from "../../../stack/auth/login-google.stack";
 
 interface AuthFormProps {
   mode: "sign-in" | "sign-up";
@@ -18,16 +18,12 @@ type AuthFormFields = {
   fullName?: string;
   phone?: string;
 };
-export const AuthForm: FC<AuthFormProps> = ({
-  mode,
-  onSuccess,
-  redirectUrl,
-}) => {
-    
+export const AuthForm: FC<AuthFormProps> = ({ mode }) => {
   const { mutate: loginMutate, isPending: isLoginPending } =
     useLoginUsuarioYSesionMutate();
   const { mutate: registerMutate, isPending: isRegisterPending } =
     useCrearUsuarioYSesionMutate();
+  const { mutate: loginGoogle, isPending } = useLoginGoogleMutate();
 
   const isSignIn = mode === "sign-in";
   const schema = isSignIn ? LoginSchema : RegisterSchema;
@@ -47,13 +43,12 @@ export const AuthForm: FC<AuthFormProps> = ({
   const form = handleSubmit((data: any) => {
     try {
       if (isSignIn) {
-        console.log("Login data:", data.email, data.password);
         loginMutate(data);
       } else {
         registerMutate(data);
       }
     } catch (error) {
-      console.error("Error al iniciar sesión:", error);
+      if (import.meta.env.DEV) console.error("Error al iniciar sesión:", error);
     }
   });
 
@@ -96,13 +91,26 @@ export const AuthForm: FC<AuthFormProps> = ({
               )}
             </div>
 
-            <button
-              type="submit"
-              className="bg-[#bca789] text-black font-mono font-semibold text-lg py-3 rounded-xl mt-6 w-full shadow-sm hover:bg-[#a68c6d] transition"
-              disabled={isLoginPending}
-            >
-              {isLoginPending ? "Signing In..." : "Sign In"}
-            </button>
+            <div className="flex flex-col gap-3 mt-6">
+              <button
+                type="submit"
+                className="bg-[#bca789] text-black font-mono font-semibold text-lg py-3 rounded-xl w-full shadow-sm hover:bg-[#a68c6d] transition"
+                disabled={isLoginPending}
+              >
+                {isLoginPending ? "Signing In..." : "Sign In"}
+              </button>
+
+              <button
+                type="button"
+                className="bg-[#bca789] text-black font-mono font-semibold text-lg py-3 rounded-xl w-full shadow-sm hover:bg-[#a68c6d] transition"
+                onClick={() => loginGoogle()}
+                disabled={isPending}
+              >
+                {isPending
+                  ? "Signing In with Google..."
+                  : "Sign in with Google"}
+              </button>
+            </div>
           </>
         )}
 

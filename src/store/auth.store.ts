@@ -3,26 +3,52 @@ import { supabase } from "../supabase/supabase.config";
 import type { User } from "@supabase/supabase-js";
 import type { IAuthLogin, IAuthRegister } from "../interfaces/auth.interface";
 
-interface AuthState {
-  crearUserRegister: (p: IAuthRegister) => Promise<any>;
-  cerrarSesion: () => Promise<void>;
-  crearUserYLogin: (p: IAuthLogin) => Promise<any>;
-}
-
-interface SubcriptionState {
+interface AuthStore {
+  usuario: User | null;
   user: User | null;
-  setUser: (user: User | null) => void;
+  cargando: boolean;
+  loading: boolean;
+  iniciarSesion: (p: IAuthLogin) => Promise<any>;
+  registrarUsuario: (p: IAuthRegister) => Promise<any>;
+  cerrarSesion: () => Promise<void>;
+  inicializarAuth: () => () => void;
+  loginGoogle: () => Promise<void>;
 }
 
-export const useAuthStore = create<AuthState>(() => ({
-  crearUserRegister: async (p: IAuthRegister) => {
+export const useAuthStore = create<AuthStore>((set) => ({
+  usuario: null,
+  user: null,
+  cargando: true,
+  loading: true,
+
+  inicializarAuth: () => {
+    const setUsuario = (usuario: User | null) => {
+      set({ usuario, user: usuario, cargando: false, loading: false });
+    };
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUsuario(session?.user ?? null);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_evento, sesion) => {
+      setUsuario(sesion?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  },
+
+  registrarUsuario: async (p: IAuthRegister) => {
+    const correo = p.correo ?? p.email;
+    const contrasena = p.contrasena ?? p.password;
     const { data, error } = await supabase.auth.signUp({
-      email: p.email,
-      password: p.password,
+      email: correo,
+      password: contrasena,
       options: {
         data: {
-          full_name: p.fullName,
-          phone: p.phone,
+          full_name: p.nombreCompleto ?? p.fullName,
+          phone: p.telefono ?? p.phone,
         },
       },
     });
@@ -33,10 +59,12 @@ export const useAuthStore = create<AuthState>(() => ({
     return data.user;
   },
 
-  crearUserYLogin: async (p: IAuthLogin) => {
-     const { data, error } = await supabase.auth.signInWithPassword({
-      email: p.email,
-      password: p.password,
+  iniciarSesion: async (p: IAuthLogin) => {
+    const correo = p.correo ?? p.email;
+    const contrasena = p.contrasena ?? p.password;
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: correo,
+      password: contrasena,
     });
 
     if (error) {
@@ -48,25 +76,12 @@ export const useAuthStore = create<AuthState>(() => ({
 
   cerrarSesion: async () => {
     await supabase.auth.signOut();
+    set({ usuario: null, user: null });
+  },
+
+  loginGoogle: async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: "google",
+    });
   },
 }));
-
-export const useSubcription = create<SubcriptionState>((set) => {
-  const store = {
-    user: null,
-    setUser: (user: User | null) => set({ user }),
-  };
-  supabase.auth.getSession().then(({ data: { session } }) => {
-    if (session?.user) {
-      set({ user: session.user });
-    }
-  });
-  supabase.auth.onAuthStateChange((_event, session) => {
-    if (session?.user) {
-      set({ user: session.user });
-    } else {
-      set({ user: null });
-    }
-  });
-  return store;
-});

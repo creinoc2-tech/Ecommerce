@@ -1,8 +1,8 @@
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { useCounterStore } from "../../../store/counter.store";
-import { useCartStore } from "../../../store/cart-store";
+import { useCartStore } from "../../../store/carrito.store";
 import type { FC } from "react";
-import type { Product } from "../../../interfaces/product.interface";
+import type { Product } from "../../../interfaces/producto.interface";
 
 interface Props {
   id: string;

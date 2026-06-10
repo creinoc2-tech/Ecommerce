@@ -2,8 +2,8 @@ import { useState } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { IoMdClose } from "react-icons/io";
 import { useGlobalStore } from "../store/global.store";
-import type { Product } from "../interfaces/product.interface";
-import { useBuscarProducto } from "../stack/producto/producto-search-Stack";
+import type { Product } from "../interfaces/producto.interface";
+import { useBuscarProducto } from "../stack/producto/buscar-producto.stack";
 import { Link } from "react-router";
 import { formatPrice } from "../utils/productos";
 
@@ -17,7 +17,6 @@ export const Search = () => {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (searchTerm.trim()) {
-      console.log("Productos encontrados:", searchTerm);
       await setSearchResults(products as Product[]);
     }
   };
@@ -52,7 +51,7 @@ export const Search = () => {
             {searchResults.map((product) => (
               <li className="mb-4 group" key={product.id}>
                 <Link
-                  to={`/product/${product.slug}`}
+                  to={`/productos/${product.slug}`}
                   onClick={closeSheet}
                   className="flex items-center gap-5 bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-3 hover:bg-zinc-800 transition-colors"
                 >

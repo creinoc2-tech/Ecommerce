@@ -7,7 +7,7 @@ export const CtaBanner = () => {
     <Section
       title="Elevate Your Wardrobe"
       description="Don't miss out - experience the epitome of fashion by clicking 'Buy Now' and embrace a world of chic elegance"
-      containerClassName="bg-[#c5b9a5] border-transparent"
+      containerClassName="bg-[--color-primary-subtle] border-transparent"
       rightAsset={
         <BallCircleIcon
           className="h-24 sm:h-40 lg:h-[316px] xl:h-[386px] w-24 sm:w-40 lg:w-[301px] xl:w-[506px] opacity-30"
@@ -15,8 +15,8 @@ export const CtaBanner = () => {
       }
       rightAssetClassName="translate-x-2 sm:translate-x-4 lg:translate-x-6 xl:translate-x-10"
       rightAction={<CtaContainer inline />}
-      headingClassName="text-white"
-      descriptionClassName="text-gray-800"
+      headingClassName="text-[--color-primary-fg]"
+      descriptionClassName="text-[--color-primary-fg]"
     >
        <div />
     </Section>
